@@ -13,9 +13,10 @@ import java.util.stream.Collectors;
 @Getter
 public class Player implements DiceAction {
 
-    private int maxHp = 20;
-    private int currentHp = maxHp;
-    private int mana = 0;
+    private final PlayerStats playerStats = new PlayerStats();
+
+    private int totalRolls = 3;
+    private int remainingRolls = 3;
 
     private List<Die> dice = new ArrayList<>();
     private List<Die> keepPile = new ArrayList<>();
@@ -47,9 +48,12 @@ public class Player implements DiceAction {
 
     @Override
     public void roll() {
+        if(this.remainingRolls <= 0) return;
+
         for(Die die : this.diceInPlay) {
             die.roll();
         }
+        this.remainingRolls--;
     }
 
     @Override
@@ -59,8 +63,28 @@ public class Player implements DiceAction {
     }
 
     @Override
+    public void keepAll() {
+        this.keepPile.addAll(diceInPlay);
+        this.diceInPlay.clear();
+    }
+
+
+    @Override
     public void retrieveDice() {
         this.diceInPlay.addAll(this.keepPile);
     }
 
+    public boolean hasRollsRemaining() {
+        return 0 < this.remainingRolls;
+    }
+
+    public boolean isDead() {
+        return this.playerStats.getHealthStatus() == HealthStatus.DEAD;
+    }
+
+    public void updateStats() {
+        for(Die die : this.getDiceKept()) {
+            die.affect(this.playerStats);
+        }
+    }
 }

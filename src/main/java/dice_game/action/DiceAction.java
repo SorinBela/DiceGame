@@ -6,6 +6,7 @@ public interface DiceAction extends Action {
 
     void roll();
     void keep(Die die);
+    void keepAll();
     void retrieveDice();
 
 }

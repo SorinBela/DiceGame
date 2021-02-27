@@ -16,4 +16,15 @@ class PlayerTest {
         assertNotEquals("[⎋, ⎋, ⎋, ⎋, ⎋]", stdPlayer.getDiceInPlay().toString());
     }
 
+    @Test
+    void givenStdDice_whenRollingDice_thenStatsUpdateOk() {
+        Player stdPlayer = PlayerFactory.createNewPlayer();
+        PlayerStats stats = stdPlayer.getPlayerStats();
+        assertEquals(0, stats.sumStats());
+        stdPlayer.roll();
+        stdPlayer.keepAll();
+        stdPlayer.updateStats();
+        assertEquals(5, stats.sumStats());
+    }
+
 }

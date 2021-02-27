@@ -1,6 +1,6 @@
 package dice_game.model.player;
 
-import dice_game.model.dice.StdSixSidedDie;
+import dice_game.model.dice.StdOerloegD6;
 import dice_game.model.dice.Symbol;
 import dice_game.model.dice.TestDie;
 
@@ -10,11 +10,11 @@ public class PlayerFactory {
 
     public static Player createNewPlayer() {
         return new Player(
-                new StdSixSidedDie(),
-                new StdSixSidedDie(),
-                new StdSixSidedDie(),
-                new StdSixSidedDie(),
-                new StdSixSidedDie()
+                new StdOerloegD6(),
+                new StdOerloegD6(),
+                new StdOerloegD6(),
+                new StdOerloegD6(),
+                new StdOerloegD6()
         );
     }
 

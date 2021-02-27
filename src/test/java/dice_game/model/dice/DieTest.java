@@ -3,14 +3,15 @@ package dice_game.model.dice;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DieTest {
 
     @Test
     void testRoll() {
-        Die die = new StdSixSidedDie();
+        Die die = new StdOerloegD6();
         Face face = die.roll();
-        System.out.println(face.getSymbol());
+        assertTrue("⚔⤖⛨⎋⭍".contains(face.getSymbol().toString()));
     }
 
     @Test

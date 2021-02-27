@@ -6,7 +6,8 @@ public enum Symbol {
     ATK_RANGED("⤖"),
     DEF_MELEE("⛨"),
     DEF_RANGED("⎋"),
-    STEAL("⭍");
+    STEAL("⭍"),
+    BLANK("");
 
     private final String character;
 

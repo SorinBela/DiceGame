@@ -1,10 +1,8 @@
 package dice_game.model.dice;
 
-import java.util.ArrayList;
+public class StdOerloegD6 extends Die {
 
-public class StdSixSidedDie extends Die {
-
-    public StdSixSidedDie() {
+    public StdOerloegD6() {
         this.addFace(new Face(Symbol.ATK_MELEE, true));
         this.addFace(new Face(Symbol.ATK_MELEE));
         this.addFace(new Face(Symbol.ATK_RANGED));
