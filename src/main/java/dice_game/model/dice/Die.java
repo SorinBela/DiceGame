@@ -15,6 +15,12 @@ public abstract class Die {
         return this.top;
     }
 
+    protected void addFace(Face face) {
+        this.sides.add(face);
+        this.top = face;
+    }
+
+    @Override
     public String toString() {
         return this.top.toString();
     }

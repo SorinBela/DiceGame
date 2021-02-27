@@ -34,6 +34,15 @@ public class Player implements DiceAction {
             throw new IllegalArgumentException("Cannot instantiate Player with given Dice.");
         }
         this.dice.addAll(diceToInsert);
+        this.diceInPlay.addAll(diceToInsert);
+    }
+
+    public List<Die> getDiceKept() {
+        return this.keepPile;
+    }
+
+    public List<Die> getDiceInPlay() {
+        return this.diceInPlay;
     }
 
     @Override
