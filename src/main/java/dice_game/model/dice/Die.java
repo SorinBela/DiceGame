@@ -44,8 +44,16 @@ public abstract class Die {
         }
     }
 
+    public int getSize() {
+        return this.sides.size();
+    }
+
+    public List<Face> getSides() {
+        return this.sides;
+    }
+
     @Override
     public String toString() {
-        return this.top.toString();
+        return "(" +this.top.toString() +")" + this.sides.toString();
     }
 }

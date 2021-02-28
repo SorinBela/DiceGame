@@ -5,10 +5,7 @@ import dice_game.model.dice.Die;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Getter
 public class Player implements DiceAction {
@@ -22,20 +19,14 @@ public class Player implements DiceAction {
     private List<Die> keepPile = new ArrayList<>();
     private List<Die> diceInPlay = new ArrayList<>();
 
-    protected Player(Die... dice) {
+    protected Player(List<Die> diceSet) {
 
-        if(dice == null) {
-            throw new IllegalArgumentException("Player Constructor received _null_ as Dice");
+        if(diceSet == null || diceSet.isEmpty()) {
+            throw new IllegalArgumentException("Cannot construct Player without DiceSet. DiceSet provided was " + diceSet);
         }
 
-        List<Die> diceToInsert = Arrays.stream(dice).
-                filter(Objects::nonNull)
-                .collect(Collectors.toList());
-        if(diceToInsert.isEmpty()) {
-            throw new IllegalArgumentException("Cannot instantiate Player with given Dice.");
-        }
-        this.dice.addAll(diceToInsert);
-        this.diceInPlay.addAll(diceToInsert);
+        this.dice.addAll(diceSet);
+        this.diceInPlay.addAll(diceSet);
     }
 
     public List<Die> getDiceKept() {

@@ -1,6 +1,6 @@
 package dice_game.model.dice;
 
-public class Face {
+class Face {
 
     private Die container;
     private Symbol symbol;
